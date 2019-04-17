@@ -133,7 +133,7 @@ public class BTActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v){
                     if(mConnectedThread != null) //First check to make sure thread created
-                        mConnectedThread.write("1");
+                        mConnectedThread.write( "#"  + 0 + "#" + 0 + "#" + 3 + "e");
                 }
             });
 
@@ -208,7 +208,7 @@ public class BTActivity extends AppCompatActivity {
                 if(mConnectedThread != null) {
                     //for (int i = 0; i < 10; i++) {
                         //mReadBuffer.setText("Connected");
-                        mConnectedThread.write( "#"  + pwm + "#" + power + "e");
+                        mConnectedThread.write( "#"  + pwm + "#" + power + "#" + 1 + "e");
                     //}
                 }
             }
@@ -334,6 +334,7 @@ public class BTActivity extends AppCompatActivity {
                             mBTSocket.close();
                             mHandler.obtainMessage(CONNECTING_STATUS, -1, -1)
                                     .sendToTarget();
+
                         } catch (IOException e2) {
                             //insert code to deal with this
                             Toast.makeText(getBaseContext(), "Socket creation failed", Toast.LENGTH_SHORT).show();
@@ -342,6 +343,10 @@ public class BTActivity extends AppCompatActivity {
                     if(fail == false) {
                         mConnectedThread = new ConnectedThread(mBTSocket);
                         mConnectedThread.start();
+
+                        if(mConnectedThread != null) {
+                            mConnectedThread.write( "#"  + 0 + "#" + 0 + "#" + 0 + "e");
+                        }
 
                         mHandler.obtainMessage(CONNECTING_STATUS, 1, -1, name)
                                 .sendToTarget();

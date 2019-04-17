@@ -62,7 +62,7 @@
         android:checked="false"
         android:scaleX="1.7"
         android:scaleY="1.7"
-        android:text="Toggle LED"
+        android:text="Victory"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
